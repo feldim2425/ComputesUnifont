@@ -97,15 +97,16 @@ HANGUL      = $(HEXDIR)/hangul-syllables.hex
 SPACES      = $(HEXDIR)/spaces.hex
 CUSTOM00    = $(HEXDIR)/custom00.hex
 COPYLEFT    = $(HEXDIR)/copyleft.hex
+BRAILLE	    = $(HEXDIR)/braille.hex
 
 UNIFILES = $(UNIFONTBASE) $(CJK) $(HANGUL) $(SPACES) $(UNASSIGNED) \
-	   $(NONPRINTING) $(PUA) $(CUSTOM00)
+	   $(NONPRINTING) $(PUA) $(CUSTOM00) $(BRAILLE)
 
 #
 # All Plane 0 glyphs except for the JIS X 0213 glyph file, for
 # creating the unifont_sample file.
 #
-PLANE0 = copyleft.hex custom00.hex hangul-syllables.hex \
+PLANE0 = copyleft.hex custom00.hex braille.hex hangul-syllables.hex \
 	omit.hex plane00-nonprinting.hex plane00-unassigned.hex \
 	pua.hex spaces.hex unifont-base.hex wqy.hex
 
@@ -151,10 +152,15 @@ PSF = psf
 compiled-files: pcf $(PSF) $(GRAPHICS) ttf csurttf upperttf bigpic coverage
 	install -p index.html $(COMPILED_DIR)/index.html
 
+
+$(HEXDIR)/braille.hex: $(BINDIR)/hexbraille
+	$(BINDIR)/hexbraille > plane00/braille.hex
+	
+	
 #
 # Build the aggregate .hex font files
 #
-hex:
+hex: $(HEXDIR)/$(PLANE0)
 	if [ ! -d $(COMPILED_DIR) ] ; then \
 	   mkdir -p $(COMPILED_DIR) ; \
 	fi
@@ -693,6 +699,7 @@ install:
 
 clean:
 	\rm -rf $(COMPILED_DIR)/png
+	\rm -f $(HEXDIR)/braille.hex
 	\rm -f $(COMPILED_DIR)/unifont-$(VERSION).hex
 	\rm -f $(COMPILED_DIR)/unifont-$(VERSION).bdf
 	\rm -f $(COMPILED_DIR)/unifont-$(VERSION).bdf.gz
