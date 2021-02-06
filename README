@@ -1,5 +1,14 @@
+Modified
+--------
+This is a modified version of GNU Unifont, creadted for the Minecraft Mod "Computes".
 
-OVERVIEW
+The hexbraille script was modified to remove the gaps, additionally the original braille characters were removed.
+The Makefile was modified to use the hexbraille script automatically, and to create a combined hex file with all characters.
+
+To make the version used in the mod run "make BUILDFONT=1". The file used in the mod can be found under "font/compiled/unifont_full-<version>.hex"
+
+
+Original OVERVIEW
 --------
 GNU Unifont is an official GNU package.  It is a dual-width
 bitmap font, 16 pixels tall by 8 or 16 pixels wide.  Experimental
@@ -170,7 +179,7 @@ at http://www.gnu.org/licenses/gpl-2.0.html.
 The license for the compiled fonts is covered by the above GPL terms
 with the GNU font embedding exception, as follows:
 
-     As a special exception, if you create a document which uses this font,
+As a special exception, if you create a document which uses this font,
      and embed this font or unaltered portions of this font into the document,
      this font does not by itself cause the resulting document to be covered
      by the GNU General Public License. This exception does not however
