@@ -138,7 +138,7 @@ VPATH = plane00 ttfsrc
 TTFSRC = ttfsrc
 
 
-all: compiled
+all: compiled 
 
 compiled: $(UNIFILES) $(COMBINING) $(UPPER_FILES) $(UPPER_COMBINING)
 	$(MAKE) compiled-files
@@ -149,7 +149,7 @@ compiled: $(UNIFILES) $(COMBINING) $(UPPER_FILES) $(UPPER_COMBINING)
 #
 PSF = psf
 # PSF =
-compiled-files: pcf $(PSF) $(GRAPHICS) ttf csurttf upperttf bigpic coverage
+compiled-files: pcf $(PSF) $(GRAPHICS) ttf csurttf upperttf bigpic coverage combined
 	install -p index.html $(COMPILED_DIR)/index.html
 
 
@@ -619,6 +619,9 @@ upperttf: hex
 	mv $(TTFSRC)/unifont_upper_sample.ttf \
 		$(COMPILED_DIR)/unifont_upper_sample-$(VERSION).ttf 
 
+combined: hex
+	cat $(COMPILED_DIR)/unifont-$(VERSION).hex > $(COMPILED_DIR)/unifont_full-$(VERSION).hex
+	cat $(COMPILED_DIR)/unifont_upper-$(VERSION).hex | grep -v "^0020:" >> $(COMPILED_DIR)/unifont_full-$(VERSION).hex
 
 #
 # Copy the newly created files from $(COMPILED_DIR) to the precompiled/
