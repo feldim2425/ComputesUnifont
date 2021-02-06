@@ -1,2 +1,13 @@
 /font/compiled
+
+/font/plane00/braille.hex
+/font/plane00csur/plane00csur-unassigned.hex
+/font/plane00csur/all/plane00csur-all.hex
+/font/plane00csur/noscript.hex
+
+/font/plane01/noscript.hex
+/font/plane01/plane01-unassigned.hex
+/font/plane01/all/plane01-all.hex
+
 /bin
+/lib
