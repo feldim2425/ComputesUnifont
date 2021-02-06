@@ -1,6 +1,6 @@
 Modified
 --------
-This is a modified version of GNU Unifont, creadted for the Minecraft Mod "Computes".
+This is a modified version of GNU Unifont, created for the Minecraft Mod "Computes".
 
 The hexbraille script was modified to remove the gaps, additionally the original braille characters were removed.
 The Makefile was modified to use the hexbraille script automatically, and to create a combined hex file with all characters.
